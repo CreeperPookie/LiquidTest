@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "liquid_test.refmap.json",
   "mixins": [
+    "TextureAtlasMixin"
   ],
   "client": [
   ],

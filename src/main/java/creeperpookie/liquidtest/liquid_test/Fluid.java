@@ -25,6 +25,13 @@ public abstract class Fluid extends FlowingFluid
 		LiquidTest.getLogger().info("Instantiated new Fluid instance");
 	}
 
+	@Override
+	protected void createFluidStateDefinition(@NotNull StateDefinition.Builder<net.minecraft.world.level.material.Fluid, FluidState> fluidStateBuilder)
+	{
+		super.createFluidStateDefinition(fluidStateBuilder);
+		//fluidStateBuilder.add(LEVEL);
+	}
+
 	@NotNull
 	@Override
 	public FluidType getFluidType()
@@ -111,7 +118,6 @@ public abstract class Fluid extends FlowingFluid
 
 	public static class Flowing extends Fluid
 	{
-		@Override
 		protected void createFluidStateDefinition(@NotNull StateDefinition.Builder<net.minecraft.world.level.material.Fluid, FluidState> fluidStateBuilder)
 		{
 			super.createFluidStateDefinition(fluidStateBuilder);
@@ -133,6 +139,12 @@ public abstract class Fluid extends FlowingFluid
 
 	public static class Source extends Fluid
 	{
+		protected void createFluidStateDefinition(@NotNull StateDefinition.Builder<net.minecraft.world.level.material.Fluid, FluidState> fluidStateBuilder)
+		{
+			super.createFluidStateDefinition(fluidStateBuilder);
+			fluidStateBuilder.add(LEVEL);
+		}
+
 		@Override
 		public int getAmount(@NotNull FluidState fluidState)
 		{
